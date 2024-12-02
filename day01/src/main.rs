@@ -90,14 +90,15 @@ fn calculate_total_distance(pairs: Vec<IdPair>) -> u32 {
 }
 
 fn part1(content: &str) -> u32 {
+    let pairs = populate_id_pairs(content);
+    calculate_total_distance(pairs)
+}
+
+fn part2(content: &str) -> u32 {
     let ids = populate_ids(content);
     calculate_similarity(ids)
 }
 
-fn part2(content: &str) -> u32 {
-    let pairs = populate_id_pairs(content);
-    calculate_total_distance(pairs)
-}
 
 fn main() {
     let input = read_input_file();
@@ -106,9 +107,9 @@ fn main() {
         Err(error) => panic!("Error: {:?}", error),
     };
 
-    let similarity = part1(&content);
-    println!("Part 1: Similarity: {}", similarity);
-
-    let total_distance = part2(&content);
-    println!("Part 2: Total Distance: {}", total_distance);
+    let total_distance = part1(&content);
+    println!("Part 1: Total Distance: {}", total_distance);
+    
+    let similarity = part2(&content);
+    println!("Part 2: Similarity: {}", similarity);
 }
